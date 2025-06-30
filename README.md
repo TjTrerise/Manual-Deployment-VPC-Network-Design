@@ -105,7 +105,7 @@ Once the AWS Multi-Region VPC Network Architecture with Transit Gateway is deplo
 
 ## Visuals Of Finished Project
 
-[Architecture Design](/docs/architecture-diagram.png)
+![Architecture Design](/docs/architecture-diagram.png)
 
 
 ## Lessons Learned & Challenges Overcome
