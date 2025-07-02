@@ -14,7 +14,7 @@ Create the base layer to the project.
    - Tenancy: Leave as Default.
    - Click *Create VPC*.
   - Verification: You should see your new VPC listed. Note down its VPC ID (e.g., vpc-xxxxxxxxxxxxxxxxx).
-  ![EU VPC](docsvisual-guides/create-vpc1.png)
+  ![EU VPC](visual-guides/create-vpc1.png)
 
  2. Create an Internet Gateway (IGW):
   - In the left navigation pane, click on Internet Gateways.
@@ -22,7 +22,7 @@ Create the base layer to the project.
    - Name tag: Enter my-igw-region1.
    - Click *Create internet gateway*.
   - Verification: The IGW will be in a detached state.
-  ![EU IGW](docsvisual-guides/create-igw-region1.png)
+  ![EU IGW](visual-guides/create-igw-region1.png)
  3. Attach the Internet Gateway to your VPC:
   - Select the newly created my-igw-region1 Internet Gateway.
    - Click *Actions*, then Attach to VPC.
@@ -596,7 +596,7 @@ Create the central routing hub that will enable communication between the two VP
   ![Network Connectivity](visual-guides/network-connectivity.png)
  
 
-  ![Cross Region Connectivity](/docsvisual-guides/cross-region-ping.png)
+  ![Cross Region Connectivity](/svisual-guides/cross-region-ping.png)
  - Connect to EU-Private-Test-Instance-AZ2:
   - Navigate to EC2 > Instances, select EU-Private-Test-Instance-AZ2
   - Click *Connect*
