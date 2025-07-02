@@ -14,7 +14,7 @@ Create the base layer to the project.
    - Tenancy: Leave as Default.
    - Click *Create VPC*.
   - Verification: You should see your new VPC listed. Note down its VPC ID (e.g., vpc-xxxxxxxxxxxxxxxxx).
-  ![EU VPC](/visual-guides/create-vpc1.png)
+  ![EU VPC](docsvisual-guides/create-vpc1.png)
 
  2. Create an Internet Gateway (IGW):
   - In the left navigation pane, click on Internet Gateways.
@@ -22,7 +22,7 @@ Create the base layer to the project.
    - Name tag: Enter my-igw-region1.
    - Click *Create internet gateway*.
   - Verification: The IGW will be in a detached state.
-  ![EU IGW](/visual-guides/create-igw-region1.png)
+  ![EU IGW](docsvisual-guides/create-igw-region1.png)
  3. Attach the Internet Gateway to your VPC:
   - Select the newly created my-igw-region1 Internet Gateway.
    - Click *Actions*, then Attach to VPC.
@@ -44,7 +44,7 @@ Create the base layer to the project.
    - IPv4 CIDR block: Enter 10.16.16.0/20.
    - Click *Create subnet*.
    - Verification: You should see your two public subnets listed.
-  ![EU Public Subnets](/visual-guides/create-subnets-region1.png)
+  ![EU Public Subnets](visual-guides/create-subnets-region1.png)
  5. Create Private Subnets (using /20).
   - Still on the Subnets page, click *Create subnet* again.
   - VPC ID: Select my-vpc-region1.
@@ -109,7 +109,7 @@ Create the base layer to the project.
   - Check the box next to my-private-subnet-az2-region1.
   - Click *Save associations*.
   - Verification: You should now have one public route table associated with both public subnets, and two private route tables, each associated with one private subnet. (Note: These private route tables don't have internet routes yet; that will come in Step 2 with the NAT Gateway).
-  ![EU Routes](/visual-guides/create-route-tables-region1.png)
+  ![EU Routes](visual-guides/create-route-tables-region1.png)
  9. Create region 2
    *In the top right corner of the console, crucially, select your secondary region US East (N. Virginia) us-east-1. All resources in this step will be created here*.
   - Create the VPC:
@@ -123,7 +123,7 @@ Create the base layer to the project.
    - Tenancy: Leave as Default.
    - Click *Create VPC*
   - Verification: You should see your new VPC listed. Note down its VPC ID.
-   ![US VPC](/visual-guides/vpc-region2.png)
+   ![US VPC](visual-guides/vpc-region2.png)
  10. Create an Internet Gateway (IGW):
    - In the left navigation pane, click on *Internet Gateways*.
    - Click *Create internet gateway*.
@@ -136,7 +136,7 @@ Create the base layer to the project.
     - Select US-VPC from the dropdown list.
     - Click *Attach internet gateway*.
    -  Verification: The IGW state should change to attached.
-  [US IGW](/visual-guides/igw-region2.png)
+  [US IGW](visual-guides/igw-region2.png)
  11. Create Public Subnets (using /20 with distinct ranges):
    - In the left navigation pane, *click on Subnets*.
    - Click *Create subnet*.
@@ -165,7 +165,7 @@ Create the base layer to the project.
     - IPv4 CIDR block: Enter 10.32.48.0/20.
     - Click *Create subnet*.
    - Verification: You should now have four subnets (2 public, 2 private) listed for US-VPC with their respective distinct CIDRs.
-  [US Subnets](/visual-guides/subnets-region2.png)
+  [US Subnets](visual-guides/subnets-region2.png)
  13. Configure Auto-Assign Public IPv4 Addresses for Public Subnets:
    - In the Subnets list, select US-Public-Subnet-AZ1.
    - Click *Actions*, then Modify auto-assign IP settings.
@@ -195,7 +195,7 @@ Create the base layer to the project.
     - Check the boxes next to US-Public-Subnet-AZ1 and US-Public-Subnet-AZ2.
     - Click *Save associations*.
    - Verification: Confirm the 0.0.0.0/0 route to the IGW and that both public subnets are associated.
-  ![Public Route Table](/visual-guides/public-rt-region2.png)
+  ![Public Route Table](visual-guides/public-rt-region2.png)
  15. Create Private Route Tables (one per AZ):
    - In the left navigation pane, click on *Route Tables*.
    - Click *Create route table*.
@@ -207,7 +207,7 @@ Create the base layer to the project.
     - Click the *Subnet associations* tab, then *Edit subnet associations*.
     - Check the box next to US-Private-Subnet-AZ1.
     - Click *Save associations*.
-  ![Route Tables Region 2](/visual-guides/private-rt-region2.png)
+  ![Route Tables Region 2](visual-guides/private-rt-region2.png)
 ## 2 Create NAT Gateways
 Allow internet access for you private resources
 		
@@ -234,7 +234,7 @@ Allow internet access for you private resources
    - Elastic IP allocation ID: Choose the Elastic IP you allocated for AZ1 (EU-NAT-EIP-AZ1).
    - Click Create NAT gateway.
   - Verification: The NAT Gateway status will transition to Pending and then Available. Wait for it to be Available before proceeding.
-  ![NAT Gateway Subnet 1](/visual-guides/nat-gateway-subnet1-region1.png)
+  ![NAT Gateway Subnet 1](visual-guides/nat-gateway-subnet1-region1.png)
   - Create NAT Gateway in Public Subnet AZ2:
    *Repeat the above step for AZ2*
    - Name: EU-NAT-GW-AZ2.
@@ -242,7 +242,7 @@ Allow internet access for you private resources
    - Elastic IP allocation ID: Choose the Elastic IP you allocated for AZ2 (EU-NAT-EIP-AZ2).
    - Click *Create NAT gateway*.
   - Verification: Wait for it to be Available.
-  ![NAT Gateway Subnet 2](/visual-guides/nat-gateway-subnet2-region1.png)
+  ![NAT Gateway Subnet 2](visual-guides/nat-gateway-subnet2-region1.png)
  4. Update Private Route Tables to Route via NAT Gateways:
   - Navigate to VPC > Route Tables.
   - For EU-Private-RT-AZ1.
@@ -260,7 +260,7 @@ Allow internet access for you private resources
    - Target: Select NAT Gateway and choose EU-NAT-GW-AZ2.
    - Click *Save changes*.
   - Verification: Each private route table should now have a default route pointing to the NAT Gateway in its respective Availability Zone.
-  ![NAT Gateway Route](/visual-guides/add-route-ngw-private-rt.png)
+  ![NAT Gateway Route](visual-guides/add-route-ngw-private-rt.png)
  5. Allocate Elastic IPs for region 2:
   - For Region 1 US, US-VPC:
   - Allocate Elastic IP (EIP) for NAT Gateway in AZ1:
@@ -280,7 +280,7 @@ Allow internet access for you private resources
    - Elastic IP allocation ID: Choose the Elastic IP you allocated for AZ1 (US-NAT-EIP-AZ1).
    - Click *Create NAT gateway*.
   - Verification: The NAT Gateway status will transition to Pending and then Available. Wait for it to be Available before proceeding
-    ![NAT Gateway Region 2](/visual-guides/ngw-az1-region2.png)
+    ![NAT Gateway Region 2](visual-guides/ngw-az1-region2.png)
   - Create NAT Gateway in Public Subnet AZ2:
   - Repeat the above step for AZ2.
    - Name: US-NAT-GW-AZ2.
@@ -306,7 +306,7 @@ Allow internet access for you private resources
    - Target: Select NAT Gateway and choose EU-NAT-GW-AZ2.
    - Click *Save changes*.
   - Verification: Each private route table should now have a default route pointing to the NAT Gateway in its respective Availability Zone.
-  ![Route Tables Region 2](/visual-guides/private-rt-region2)
+  ![Route Tables Region 2](visual-guides/private-rt-region2)
  8. Create security groups for region 1
   - For Region 1 EU-VPC:
   - Ensure you are in Region 1 eu-west-2.
@@ -320,7 +320,7 @@ Allow internet access for you private resources
    - Click *Add rule*. Type: All ICMP - IPv4. Source: Select Custom and enter the CIDR blocks of both your VPCs 10.16.0.0/16, 10.32.0.0/16. This will allow EC2s in either VPC to ping each other once the Transit Gateway is up.
   - Outbound rules: Leave as default (All traffic, All ports, 0.0.0.0/0). (This allows outbound internet access via NAT Gateway for private instances, and direct for public ones).
    - Click *Create security group*.
-  ![EU Security Group](/visual-guides/eu-inbound-sg-rules.png)
+  ![EU Security Group](visual-guides/eu-inbound-sg-rules.png)
  9. Create security groups for region 2.
   - For Region 1 us-east-1 US-VPC:
   - Ensure you are in Region 1 us-east-1.
@@ -334,7 +334,7 @@ Allow internet access for you private resources
    - Click Add rule. Type: All ICMP - IPv4. Source: Select Custom and enter the CIDR blocks of both your VPCs 10.16.0.0/16, 10.32.0.0/16. This will allow EC2s in either VPC to ping each other once the Transit Gateway is up.
   - Outbound rules: Leave as default (All traffic, All ports, 0.0.0.0/0). (This allows outbound internet access via NAT Gateway for private instances, and direct for public ones).
    - Click *Create security group*.
-  ![US Security Group](/visual-guides/us-inbound-sg.png)
+  ![US Security Group](visual-guides/us-inbound-sg.png)
 ## 3 Create The Transit Gateway
 Create the central routing hub that will enable communication between the two VPCs.
 
@@ -347,7 +347,7 @@ Create the central routing hub that will enable communication between the two VP
    - Leave other options as default (e.g., Auto accept shared attachments, Default route table association, Default route table propagation).
    - Click *Create Transit Gateway*.
   - Verification: The TGW status will be Pending then Available. Note down its Transit Gateway ID.
-  ![EU Tranist Gateway](/visual-guides/tgw-region1.png)
+  ![EU Tranist Gateway](visual-guides/tgw-region1.png)
  2. Create Transit Gateway in Region 2 (us-east-1):
   - Switch to Region 2 us-east-1.
   - Navigate to VPC > Transit Gateways.
@@ -357,7 +357,7 @@ Create the central routing hub that will enable communication between the two VP
    - Leave other options as default.
    - Click *Create Transit Gateway*.
   - Verification: The TGW status will be Pending then Available. Note down its Transit Gateway ID.
-  ![US Transit Gateway](/visual-guides/us-tgw.png)
+  ![US Transit Gateway](visual-guides/us-tgw.png)
  3. Create Transit Gateway Peering Attachment (from Region 1 to Region 2):
   - Ensure you are in Region 1 eu-west-2.
   - Navigate to VPC > Transit Gateway Attachments.
@@ -370,14 +370,14 @@ Create the central routing hub that will enable communication between the two VP
    - Tags (optional): Add Name: EU-US-TGW-Peering.
    - Click *Create Transit Gateway Attachment*.
   - Verification: The status will be Pending Acceptance.
-  ![Transit Gateway Peering Attachment](/visual-guides/eu-tgw-peering.png)
+  ![Transit Gateway Peering Attachment](visual-guides/eu-tgw-peering.png)
  4. Accept Transit Gateway Peering Attachment (in Region 2):
   - Switch to Region 2 us-east-1.
   - Navigate to VPC > Transit Gateway Attachments.
    - Select the Pending Acceptance peering attachment (it will have a name like tgw-attach-xxxxxxxxxxxxx).
    - Click *Actions*, then Accept Transit Gateway attachment.
   - Verification: The status will change to Accepting and then Available.
-  ![Transit Gateway Inititating](/visual-guides/us-tgw-attach-initiating.png)
+  ![Transit Gateway Inititating](visual-guides/us-tgw-attach-initiating.png)
  5. Create VPC Attachment for EU-VPC (in Region 1):
   - Ensure you are in Region 1 eu-west-2.
   - Navigate to VPC > Transit Gateway Attachments.
@@ -389,7 +389,7 @@ Create the central routing hub that will enable communication between the two VP
    - Options (optional): You can keep DNS support and IPv4 DNS support enabled.
    - Click *Create Transit Gateway Attachment*.
   - Verification: Status will be Pending then Available. Note down its Transit Gateway Attachment ID.
-  ![EU VPC Attachment](/visual-guides/eu-tgw-attach-vpc.png)
+  ![EU VPC Attachment](visual-guides/eu-tgw-attach-vpc.png)
  6. Create VPC Attachment for US-VPC (in Region 2):
   - Switch to Region 2 us-east-1.
   - Navigate to VPC > Transit Gateway Attachments.
@@ -400,7 +400,7 @@ Create the central routing hub that will enable communication between the two VP
    - Subnet IDs: Select your two private subnets
    - Click *Create Transit Gateway Attachment*.
    - Verification: Status will be Pending then Available. Note down its Transit Gateway Attachment ID.
-   ![us VPC Attachment](/visual-guides/us-tgw-attach-vpc.png)
+   ![us VPC Attachment](visual-guides/us-tgw-attach-vpc.png)
  7. Update EU-VPC Private Route Tables to route to US-VPC via TGW:
   - Ensure you are in Region 1 eu-west-2.
   - Navigate to VPC > Route Tables.
@@ -438,7 +438,7 @@ Create the central routing hub that will enable communication between the two VP
    - Target: Select Transit Gateway and choose US-Region-TGW (your TGW in this region).
    - Click *Save changes*.
   - Verification: Both private route tables in US-VPC should now have a route to 10.16.0.0/16 pointing to the Transit Gateway.
-  ![Route Pointing To TGW](/visual-guides/us-tgw-route.png)
+  ![Route Pointing To TGW](visual-guides/us-tgw-route.png)
   
  10. Verify Transit Gateway Route Tables & Add Static Routes Default Behavior:
    *AWS Transit Gateways, by default, will propagate routes from attached VPCs and peering connections to their default route table*.
@@ -447,13 +447,13 @@ Create the central routing hub that will enable communication between the two VP
    - Select *create static route*.
     - US route 10.32.0.0/16 on the peering attachment of the transit gateway
     - EU route 10.16.0.0/16 on the VPC attachment.
-   ![EU Static TGW Routes](/visual-guides/eu-tgw-route.png)
+   ![EU Static TGW Routes](visual-guides/eu-tgw-route.png)
    - In Region 2 us-east-1 go to VPC > Transit Gateway Route Tables. Select the default route table for US-Region-TGW. Check the Routes tab and Associations tab. You should see propagated routes for 10.32.0.0/16 (from US-VPC attachment) and 10.16.0.0/16 (from the peering attachment).
    - Select *routes*.
    - Select *create static route*.
     - EU route 10.16.0.0/16 on the peering attachment of the transit gateway.
     - US route 10.32.0.0/16 on the VPC attachment.
-  ![US Static TGW](/visual-guides/us-tgw-static.png)
+  ![US Static TGW](visual-guides/us-tgw-static.png)
 ## 4 Deploy EC2
 
  1. Create an instance profile that allows SSM.
@@ -511,7 +511,7 @@ Create the central routing hub that will enable communication between the two VP
     yum update -y
    - Click *Launch instance*.
   - Verification: Instance state should be Pending then Running. Note its Private IPv4 address. You will not see a Public IP as it's in a private subnet.
-  ![Launching EC2 Test EU](/visual-guides/eu-test-instance-01.png)
+  ![Launching EC2 Test EU](visual-guides/eu-test-instance-01.png)
  3. Launch EC2 Instance in US-VPC Private Subnet:
   - Switch to Region 2 us-east-1.
   - Navigate to EC2 > Instances.
@@ -556,7 +556,7 @@ Create the central routing hub that will enable communication between the two VP
     yum update -y
    - Click *Launch instance*.
   - Verification: Instance state should be Pending then Running. Note its Private IPv4 address. You will not see a Public IP as it's in a private subnet.
-  ![Launching Test Instance US](/visual-guides/us-test-instance-02.png) 
+  ![Launching Test Instance US](visual-guides/us-test-instance-02.png) 
 ## 5 Configure VPC Flow Logs
  - For EU-VPC:
  - Navigate to VPC > VPC Flow Logs.
@@ -567,7 +567,7 @@ Create the central routing hub that will enable communication between the two VP
   - Log group: Enter a new name, /aws/vpc/flowlogs/eu-vpc.
   - IAM role: Create a new IAM role or choose an existing one with permissions to publish to CloudWatch Logs (AWS will often suggest one with the necessary permissions if you create a new one here).
   - Click *Create flow log*.
-  ![EU Flow Logs EU](/visual-guides/vpc-flow-region1.png)
+  ![EU Flow Logs EU](visual-guides/vpc-flow-region1.png)
  - Repeat for US-VPC in Region 2.
  - For US-VPC:
  - Navigate to VPC > VPC Flow Logs.
@@ -578,7 +578,7 @@ Create the central routing hub that will enable communication between the two VP
   - Log group: Enter a new name, /aws/vpc/flowlogs/us-vpc.
   - IAM role: Select the IAM role created in for EU-VPC.
   - Click *Create flow log*.
-  ![Flow Logs US](/visual-guides/us-flow-logs.png)
+  ![Flow Logs US](visual-guides/us-flow-logs.png)
 ## 6 Testing
 
  1. Test Outbound Internet Access from Private EC2 Instances (via NAT Gateway) & Inter-AZ connectivity:
@@ -593,10 +593,10 @@ Create the central routing hub that will enable communication between the two VP
    - sudo yum update -y (This will attempt to download updates).
    - Ping *replace with private IP EU-Private-Test-Instance-AZ2* (If successful you should see 'reply')
  - Expected Result: All commands should succeed, demonstrating outbound internet access.
-  ![Network Connectivity](/visual-guides/network-connectivity.png)
+  ![Network Connectivity](visual-guides/network-connectivity.png)
  
 
-  ![Cross Region Connectivity](/visual-guides/cross-region-ping.png)
+  ![Cross Region Connectivity](/docsvisual-guides/cross-region-ping.png)
  - Connect to EU-Private-Test-Instance-AZ2:
   - Navigate to EC2 > Instances, select EU-Private-Test-Instance-AZ2
   - Click *Connect*
