@@ -1,5 +1,6 @@
 # Manual Deployment of AWS Multi-Region VPC Network Architecture with Transit Gateway.
 
+![Architecture Design](/docs/architecture-diagram.png)
 
 ## Project Overview
 
@@ -102,11 +103,6 @@ Once the AWS Multi-Region VPC Network Architecture with Transit Gateway is deplo
 - High Availability: With resources deployed across multiple Availability Zones and regions, the architecture inherently supports high availability across services.
 - Network Centralization: The Transit Gateway acts as a central hub for network connectivity, simplifying routing and management of inter-VPC and inter-region traffic.
 - Monitoring and Troubleshooting: VPC Flow Logs are enabled to provide detailed insights into network traffic, aiding in monitoring, security analysis, and troubleshooting connectivity issues within and between your VPCs.
-
-## Visuals Of Finished Project
-
-![Architecture Design](/docs/architecture-diagram.png)
-
 
 ## Lessons Learned & Challenges Overcome
 
