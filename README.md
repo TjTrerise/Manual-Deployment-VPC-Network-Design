@@ -5,6 +5,7 @@
 
 This project involves designing and manually building a robust, multi-region cloud network architecture on AWS. It leverages core networking components like custom VPCs, public/private subnets, NAT Gateways, EC2 and security groups, with a focus on establishing secure and scalable inter-region connectivity using AWS Transit Gateway.
 
+![Architecture Design](/docs/architecture-diagram.png)
 
 ## Features
 
@@ -102,10 +103,6 @@ Once the AWS Multi-Region VPC Network Architecture with Transit Gateway is deplo
 - High Availability: With resources deployed across multiple Availability Zones and regions, the architecture inherently supports high availability across services.
 - Network Centralization: The Transit Gateway acts as a central hub for network connectivity, simplifying routing and management of inter-VPC and inter-region traffic.
 - Monitoring and Troubleshooting: VPC Flow Logs are enabled to provide detailed insights into network traffic, aiding in monitoring, security analysis, and troubleshooting connectivity issues within and between your VPCs.
-
-## Visuals Of Finished Project
-
-![Architecture Design](/docs/architecture-diagram.png)
 
 
 ## Lessons Learned & Challenges Overcome
