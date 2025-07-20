@@ -1,6 +1,5 @@
 # Manual Deployment of AWS Multi-Region VPC Network Architecture with Transit Gateway.
 
-![Architecture Design](/docs/architecture-diagram.png)
 
 ## Project Overview
 
@@ -45,10 +44,10 @@ To get started with deploying this AWS Multi-Region VPC Network Architecture, pl
 - Create an internet gateway and attach it to the VPC.
 - Create public subnets.
 - Subnet A 10.16.0.0/20 AZ A.
-- Subnet B 10.32.0/20 AZ B.
+- Subnet B 10.16.16.0/20 AZ B.
 - Create private subnets.
-- Subnet A 10.16.0.0/20 AZ A.
-- Subnet B 10.32.0.0/20 AZ B.
+- Subnet A 10.16.32.0/20 AZ A.
+- Subnet B 10.16.48.0/20 AZ B.
 - Configure auto-assign public IPs for public subnets.
 - Create a public route table and associate with public subnets.
 - Create private route table for private subnet A.
@@ -103,6 +102,11 @@ Once the AWS Multi-Region VPC Network Architecture with Transit Gateway is deplo
 - High Availability: With resources deployed across multiple Availability Zones and regions, the architecture inherently supports high availability across services.
 - Network Centralization: The Transit Gateway acts as a central hub for network connectivity, simplifying routing and management of inter-VPC and inter-region traffic.
 - Monitoring and Troubleshooting: VPC Flow Logs are enabled to provide detailed insights into network traffic, aiding in monitoring, security analysis, and troubleshooting connectivity issues within and between your VPCs.
+
+## Visuals Of Finished Project
+
+![Architecture Design](/docs/architecture-diagram.png)
+
 
 ## Lessons Learned & Challenges Overcome
 
